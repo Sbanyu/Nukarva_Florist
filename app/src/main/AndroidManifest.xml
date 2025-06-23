@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CREDENTIAL_MANAGER" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Nukarva_Florist"
+        tools:targetApi="tiramisu">
+
+        <activity
+            android:name=".ui.onboarding.OnBoardingActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Detail Plant Activity -->
+        <activity
+            android:name=".ui.product.ProductDetailActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Favorite Activity -->
+        <activity
+            android:name=".ui.menu.FavoriteActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Register Activity -->
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Otp Activity -->
+        <activity
+            android:name=".ui.auth.OtpActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Core Activity -->
+        <activity
+            android:name=".ui.home.CoreActivity"
+            android:theme="@style/Theme.NukarvaFlorist"
+            android:exported="true"/>
+
+        <activity
+            android:name=".ui.address.ChoosePinpointActivity"
+            android:exported="true"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+    </application>
+</manifest>

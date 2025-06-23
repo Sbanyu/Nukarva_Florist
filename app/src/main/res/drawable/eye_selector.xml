@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Saat tombol ditekan (aktif), ikon berwarna hitam -->
+    <item android:state_selected="true" android:drawable="@drawable/ic_eye_on" />
+    <!-- Saat tombol tidak ditekan (default), ikon berwarna abu-abu -->
+    <item android:drawable="@drawable/ic_eye_off" />
+</selector>

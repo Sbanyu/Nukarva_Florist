@@ -1,0 +1,47 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/ll_header"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Nama Opsi -->
+    <TextView
+        android:id="@+id/tv_options"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/urbanist_bold"
+        android:text="{Options Name}"
+        android:textColor="@color/font_black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rb_options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- RadioGroup Opsi -->
+    <RadioButton
+        android:id="@+id/rb_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:buttonTint="@color/main_color_500"
+        app:layout_constraintBottom_toBottomOf="@id/tv_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_options">
+
+    </RadioButton>
+
+    <!-- Garis Bawah -->
+    <View
+        android:id="@+id/iv_line_below"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/fill_color_04"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_options" />
+</androidx.constraintlayout.widget.ConstraintLayout>

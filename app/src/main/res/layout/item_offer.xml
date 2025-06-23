@@ -1,0 +1,58 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="12dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp">
+
+    <ImageView
+        android:id="@+id/img_offer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_offer_1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/img_offer"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_discount_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30% Discount"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/urbanist_bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_offer_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/urbanist_medium"
+            android:maxLines="2"
+            android:text="Get discount for every orders, only valid for today"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_shop_now"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
+            android:text="Shop Now"
+            android:textAllCaps="false"
+            android:fontFamily="@font/urbanist_bold"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

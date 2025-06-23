@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="disable">#E8E8E8</color>
+
+    <!-- Main Colors -->
+    <color name="main_color_500">#41644A</color>
+    <color name="main_color_400">#67836E</color>
+    <color name="main_color_300">#8DA292</color>
+    <color name="main_color_200">#B3C1B7</color>
+    <color name="main_color_100">#ECF0ED</color>
+
+    <!-- Background Colors -->
+    <color name="dark_500">#121212</color>
+    <color name="dark_400">#0E0E0E</color>
+    <color name="dark_300">#0B0B0B</color>
+    <color name="dark_200">#070707</color>
+    <color name="dark_100">#000000</color>
+
+    <color name="white_500">#FFFFFF</color>
+    <color name="white_400">#FBFBFB</color>
+    <color name="white_300">#FCFCFC</color>
+    <color name="white_200">#FDFDFD</color>
+    <color name="white_100">#FEFEFE</color>
+
+    <!-- Fill Colors -->
+    <color name="fill_color_01">#181818</color>
+    <color name="fill_color_02">#1D1C1E</color>
+    <color name="fill_color_03">#FFFFFF</color>
+    <color name="fill_color_04">#FBFBFB</color>
+
+    <!-- Font Colors -->
+    <color name="font_white">#FFFFFF</color>
+    <color name="font_black">#000000</color>
+    <color name="font_grey">#7A8499</color>
+
+    <!-- Alert Colors -->
+    <!-- Info -->
+    <color name="info_500">#0090E0</color>
+    <color name="info_400">#33A6E6</color>
+    <color name="info_300">#66BCEC</color>
+    <color name="info_200">#CCE9F9</color>
+    <color name="info_100">#E6F4FC</color>
+
+    <!-- Success -->
+    <color name="success_500">#34C240</color>
+    <color name="success_400">#5DCE66</color>
+    <color name="success_300">#85DABC</color>
+    <color name="success_200">#AEE7B3</color>
+    <color name="success_100">#EBF9EC</color>
+
+    <!-- Warning -->
+    <color name="warning_500">#F3C240</color>
+    <color name="warning_400">#F7BA26</color>
+    <color name="warning_300">#FCC591</color>
+    <color name="warning_200">#FCD895</color>
+    <color name="warning_100">#FFF5ED</color>
+
+    <!-- Danger -->
+    <color name="danger_500">#DD4242</color>
+    <color name="danger_400">#DD8688</color>
+    <color name="danger_300">#FCC591</color>
+    <color name="danger_200">#F17D9D</color>
+    <color name="danger_100">#FFBCCC</color>
+
+</resources>

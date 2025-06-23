@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/root">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        app:statusBarForeground="@color/white">
+    <!-- Toolbar -->
+    <include android:id="@+id/toolbar" layout="@layout/toolbar_with_favorite"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <!-- Cart List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:paddingHorizontal="24dp"
+        android:clipToPadding="false"
+        android:layout_marginBottom="80dp"
+        android:layout_below="@id/toolbar"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_cart"/>
+
+    <!-- Bottom Order Summary -->
+    <LinearLayout
+        android:id="@+id/bottomSummary"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingBottom="0dp"
+        android:paddingHorizontal="16dp"
+        android:gravity="center_vertical"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textColor="@color/font_grey"
+                android:textSize="14sp"
+                android:fontFamily="@font/urbanist_regular" />
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0.00"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:fontFamily="@font/urbanist_bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOrder"
+            android:layout_width="140dp"
+            android:layout_height="48dp"
+            android:text="Order"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/disable"
+            android:textColor="@color/white"
+            android:enabled="false"
+            android:fontFamily="@font/urbanist_bold"
+            android:background="@drawable/rounded_button"/>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

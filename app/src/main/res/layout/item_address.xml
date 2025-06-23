@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/white"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@drawable/outlined_button_background">
+
+        <RadioButton
+            android:id="@+id/radioSelect"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:buttonTint="@color/main_color_500"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"/>
+
+        <TextView
+            android:id="@+id/tvLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/urbanist_bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLabel"
+            android:layout_marginTop="12dp"
+            android:text="(405) 555–0128"
+            android:textSize="12sp"
+            android:textColor="@color/fill_color_02"
+            android:fontFamily="@font/urbanist_bold" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPhone"
+            android:layout_marginTop="8dp"
+            android:text="12–44 O’Connell Street, NSW 2747, Australia"
+            android:textColor="@color/font_grey"
+            android:textSize="12sp"
+            android:fontFamily="@font/urbanist_medium"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <Button
+            android:id="@+id/btnChangeAddress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tvAddress"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/outlined_button_background"
+            android:text="Change Address"
+            android:textAllCaps="false"
+            android:textColor="@color/main_color_500"
+            android:fontFamily="@font/urbanist_bold"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

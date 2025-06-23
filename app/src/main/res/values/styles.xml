@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LargerPasswordDot">
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="PinWidget.PinView" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/font_black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/urbanist_medium</item>
+
+        <!-- Chaos PinView custom attributes -->
+        <item name="android:cursorVisible">true</item>
+        <item name="cursorColor">@color/font_black</item>
+        <item name="cursorWidth">2dp</item>
+        <item name="itemCount">4</item>
+        <item name="itemHeight">55dp</item>
+        <item name="itemWidth">55dp</item>
+        <item name="itemSpacing">12dp</item>
+        <item name="itemRadius">10dp</item>
+        <item name="viewType">rectangle</item>
+        <item name="hideLineWhenFilled">false</item>
+        <item name="lineWidth">2dp</item>
+
+        <!-- Apply the line color selector -->
+        <item name="lineColor">@drawable/otp_box_background</item>
+    </style>
+
+    <!-- res/values/styles.xml -->
+    <style name="CircleShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+</resources>

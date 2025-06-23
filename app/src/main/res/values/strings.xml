@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Nukarva_Florist</string>
+    <string name="plantify">Plantify</string>
+    <string name="fab_content_description">fab</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_bag">Shopping</string>
+    <string name="title_profile">Profile</string>
+</resources>
