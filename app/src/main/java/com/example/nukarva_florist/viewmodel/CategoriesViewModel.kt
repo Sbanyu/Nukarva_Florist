@@ -4,14 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nukarva_florist.data.model.AuthResponse
 import com.example.nukarva_florist.data.model.Category
-import com.example.nukarva_florist.data.req.OtpRequest
-import com.example.nukarva_florist.data.resp.BasicResponse
-import com.example.nukarva_florist.repository.AuthRepository
 import com.example.nukarva_florist.repository.CategoryRepository
 import com.example.nukarva_florist.utils.Resource
-import com.google.android.gms.common.api.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

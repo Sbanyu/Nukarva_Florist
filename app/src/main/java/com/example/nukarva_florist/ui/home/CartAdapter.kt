@@ -8,8 +8,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.nukarva_florist.R
-import com.example.nukarva_florist.data.model.CartItemResponse
+import com.example.nukarva_florist.data.resp.CartItemResponse
 import com.example.nukarva_florist.databinding.ItemCartBinding
+import com.example.nukarva_florist.di.AppModule
+import com.example.nukarva_florist.utils.AppUtil.toRupiahWithoutDecimal
 import org.json.JSONArray
 
 class CartAdapter(
@@ -32,7 +34,7 @@ class CartAdapter(
             tvProductName.text = item.productName
             tvType.text = item.type ?: "-"
             tvQuantity.text = "${item.quantity}"
-            tvPrice.text = "Rp %,.0f".format(item.quantity * item.price)
+            tvPrice.text = (item.quantity * item.price).toRupiahWithoutDecimal()
 
             // Checkbox state
             checkboxSelect.isChecked = item.isSelected

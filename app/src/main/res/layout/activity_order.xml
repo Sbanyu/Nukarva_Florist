@@ -10,8 +10,8 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:background="@color/white"
+        android:fitsSystemWindows="true"
         app:statusBarForeground="@color/white">
 
         <!-- Toolbar -->
@@ -22,13 +22,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/toolbar_height_default"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="80dp"
         android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="24dp"
             android:orientation="vertical">
 
             <!-- Delivery Section -->
@@ -93,6 +95,7 @@
                     android:layout_centerVertical="true">
 
                     <TextView
+                        android:id="@+id/tv_label_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Office"
@@ -102,6 +105,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_sub_label_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="12–44 O'Connell St, 2747, Australia"
@@ -241,7 +245,8 @@
                     android:fontFamily="@font/urbanist_medium"
                     android:textColor="@color/main_color_500"
                     android:textStyle="bold"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
@@ -249,7 +254,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/outlined_button_background"
-                android:backgroundTint="@color/disable"
                 android:padding="16dp"
                 android:layout_marginTop="16dp">
 
@@ -265,8 +269,8 @@
                         android:id="@+id/imgShipment"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_map" />
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_logo_pxp" />
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
@@ -278,6 +282,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_nama_provider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Si Cepat Express"
@@ -286,6 +291,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_sub_provider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Arrives in 2–4 in weekdays"
@@ -295,6 +301,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_price_provider"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$3.00"
@@ -326,6 +333,7 @@
                     android:id="@+id/tv_change_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:text="Lihat semua"
                     android:fontFamily="@font/urbanist_bold"
                     android:textColor="@color/main_color_500"
@@ -334,10 +342,11 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_method_pembayaran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_payment"
-                tools:itemCount="2"/>
+                tools:itemCount="1"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -353,8 +362,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="1dp"
-                android:background="@drawable/outlined_button_background">
+                app:cardElevation="0dp"
+                android:foreground="@drawable/outlined_button_background"
+                android:foregroundTint="@color/disable">
 
                 <LinearLayout
                     android:layout_width="match_parent"

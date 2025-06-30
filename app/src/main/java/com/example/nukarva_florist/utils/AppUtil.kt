@@ -17,6 +17,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nukarva_florist.R
 import com.google.android.material.textfield.TextInputLayout
+import java.text.NumberFormat
+import java.util.Locale
 
 object AppUtil {
 
@@ -152,4 +154,12 @@ object AppUtil {
 
         animatorSet.start()
     }
+
+    fun Double.toRupiahWithoutDecimal(): String {
+        val localeID = Locale("in", "ID")
+        val formatter = NumberFormat.getCurrencyInstance(localeID)
+        formatter.maximumFractionDigits = 0
+        return formatter.format(this).replace("Rp", "Rp ")
+    }
+
 }

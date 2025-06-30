@@ -18,6 +18,8 @@ object Constants {
     object Preferences {
         const val MAIN_CONFIG: String = "BRISIAppPref"
         const val LOGGEDIN: String = "isloggedin"
+        const val ADDRESS: String = "address"
+        const val ADDRESS_SENT: String = "address_sent"
         const val REMEMBER_ME: String = "remember_me"
         const val USERNAME: String = "username"
         const val NAMA_PENGGUNA: String = "nama_pengguna"

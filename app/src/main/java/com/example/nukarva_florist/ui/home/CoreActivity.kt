@@ -2,10 +2,13 @@ package com.example.nukarva_florist.ui.home
 
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -25,6 +28,7 @@ class CoreActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCoreLayoutBinding
     private lateinit var navController: NavController
+    private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,4 +64,27 @@ class CoreActivity : AppCompatActivity() {
             navView.menu.getItem(2).isEnabled = false
         }
     }
+
+    @Override
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+
+        if (currentFragment is HomeFragment) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                return
+            }
+
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Tekan kembali sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                doubleBackToExitPressedOnce = false
+            }, 2000)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
 }

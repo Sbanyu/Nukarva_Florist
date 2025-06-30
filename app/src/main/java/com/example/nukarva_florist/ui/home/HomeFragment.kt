@@ -1,8 +1,11 @@
 package com.example.nukarva_florist.ui.home
 
 import Product
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +17,8 @@ import android.view.ViewTreeObserver
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -22,16 +27,21 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nukarva_florist.R
 import com.example.nukarva_florist.data.AppPreferences
 import com.example.nukarva_florist.data.model.Offer
+import com.example.nukarva_florist.data.req.AddressRequest
 import com.example.nukarva_florist.databinding.HomeLayoutBinding
 import com.example.nukarva_florist.repository.ShimmerAdapter
 import com.example.nukarva_florist.ui.menu.FavoriteActivity
 import com.example.nukarva_florist.ui.product.ProductDetailActivity
 import com.example.nukarva_florist.utils.GridSpacingItemDecorationHorizontalOnly
 import com.example.nukarva_florist.utils.Resource
+import com.example.nukarva_florist.viewmodel.AddressViewModel
 import com.example.nukarva_florist.viewmodel.CategoriesViewModel
 import com.example.nukarva_florist.viewmodel.ProductsViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -41,9 +51,14 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: CategoriesViewModel by viewModels()
     private val viewProductModel: ProductsViewModel by viewModels()
+    private val addressViewModel: AddressViewModel by viewModels()
     private lateinit var plantsAdapter: PlantsAdapter
     private var categoryScrollTop = 0
     private var isNavigatingToDetail = false
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
+    private var isAddressSent = false
+    private var backPressedOnce = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,9 +78,20 @@ class HomeFragment : Fragment() {
         setupViewPager()
         setupCategoryChips()
         setupRecyclerView()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        val savedAddress = appPreferences.getAddress()
+        if (!savedAddress.isNullOrBlank()) {
+            binding.tvLokasi.text = savedAddress
+        } else {
+            getCurrentLocation()
+        }
+
     }
 
     private fun setUpToolbar(){
+
+        binding.tvUsername.text = appPreferences.getUsername()
         binding.favoritesIconToolbar.setOnClickListener {
             val intent = Intent(requireContext(), FavoriteActivity::class.java)
             startActivity(intent)
@@ -332,4 +358,89 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun getCurrentLocation() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null && !isAddressSent) {
+                isAddressSent = true  // tandai sudah dikirim
+
+                val geocoder = Geocoder(requireContext(), Locale.getDefault())
+                val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+
+                val lat = addresses?.firstOrNull()?.latitude ?: 0.0
+                val long = addresses?.firstOrNull()?.longitude ?: 0.0
+                val address = addresses?.firstOrNull()
+                val street = address?.thoroughfare ?: address?.featureName ?: ""
+                val subDistrict = address?.subLocality ?: ""
+                val district = address?.subAdminArea ?: ""
+                val city = address?.locality ?: ""
+                val province = address?.adminArea ?: ""
+                val postalCode = address?.postalCode ?: ""
+                val country = address?.countryName ?: ""
+
+                val fullAddress = listOf(
+                    street,
+                    subDistrict,
+                    if (district.isNotBlank()) "Kec. $district" else "",
+                    if (city.isNotBlank()) "Kota $city" else "",
+                    province,
+                    postalCode
+                ).filter { it.isNotBlank() }.joinToString(", ")
+
+                val finalSubAddress = listOf(subDistrict, city).filter { it.isNotBlank() }.joinToString(", ")
+
+                binding.tvLokasi.text = street
+
+                val addressRequest = AddressRequest(
+                    label = "Rumah",
+                    addressLine = finalSubAddress,
+                    city = city,
+                    postalCode = postalCode,
+                    country = country,
+                    recipientName = appPreferences.getUsername().toString(),
+                    phoneNumber = "",
+                    fullAddress = fullAddress,
+                    notes = "",
+                    pinpoint = street,
+                    isMain = true,
+                    latitude = lat,
+                    longitude = long
+                )
+
+                if (location != null && !appPreferences.isAddressSent()) {
+                    appPreferences.setAddressSent(true) // Set agar tidak dikirim lagi
+                    appPreferences.setAddress(street)
+                    addressViewModel.addAddress(addressRequest)
+                }
+
+            } else {
+                Toast.makeText(requireContext(), "Lokasi tidak ditemukan", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE && grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            val savedAddress = appPreferences.getAddress()
+            if (!savedAddress.isNullOrBlank()) {
+                binding.tvLokasi.text = savedAddress
+            } else {
+                getCurrentLocation()
+            }
+        } else {
+            Toast.makeText(requireContext(), "Izin lokasi ditolak", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+

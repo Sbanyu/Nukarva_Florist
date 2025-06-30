@@ -4,5 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthData(
     @SerializedName("token")
-    val token: String?
+    val token: String?,
+    @SerializedName("fullName")
+    val fullName: String?
 )

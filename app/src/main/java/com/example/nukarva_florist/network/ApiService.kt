@@ -1,21 +1,28 @@
 package com.example.nukarva_florist.network
 
 import Product
-import com.example.nukarva_florist.data.req.AuthRequest
-import com.example.nukarva_florist.data.model.AuthResponse
-import com.example.nukarva_florist.data.model.CartResponseWrapper
+import com.example.nukarva_florist.data.model.Address
 import com.example.nukarva_florist.data.model.Category
+import com.example.nukarva_florist.data.model.Order
 import com.example.nukarva_florist.data.model.ParseResponse
+import com.example.nukarva_florist.data.model.PaymentMethod
+import com.example.nukarva_florist.data.model.Shipment
+import com.example.nukarva_florist.data.req.AddressRequest
+import com.example.nukarva_florist.data.req.AuthRequest
 import com.example.nukarva_florist.data.req.CartRequest
+import com.example.nukarva_florist.data.req.OrderRequest
 import com.example.nukarva_florist.data.req.OtpRequest
 import com.example.nukarva_florist.data.req.UpdateQuantityRequest
+import com.example.nukarva_florist.data.resp.AuthResponse
 import com.example.nukarva_florist.data.resp.BasicResponse
+import com.example.nukarva_florist.data.resp.CartResponseWrapper
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
@@ -52,6 +59,29 @@ interface ApiService {
         @Body update: UpdateQuantityRequest
     ): Response<ParseResponse>
 
+    @GET("api/v1/addresses")
+    suspend fun getAddresses(): Response<BasicResponse<List<Address>>>
+
+    @POST("api/v1/addresses")
+    suspend fun addAddress(@Body address: AddressRequest): Response<BasicResponse<Address>>
+
+    @DELETE("api/v1/addresses/{id}")
+    suspend fun deleteAddress(@Path("id") id: Int): Response<BasicResponse<Any>>
+
+    @PUT("api/v1/addresses/{id}")
+    suspend fun updateAddress(
+        @Path("id") id: Int,
+        @Body address: AddressRequest
+    ): Response<BasicResponse<Address>>
+
+    @GET("api/v1/shipments")
+    suspend fun getShipments(): Response<BasicResponse<List<Shipment>>>
+
+    @GET("api/v1/payment-methods")
+    suspend fun getPaymentMethods(): Response<BasicResponse<List<PaymentMethod>>>
+
+    @POST("api/v1/orders")
+    suspend fun createOrder(@Body request: OrderRequest): Response<BasicResponse<Order>>
 
 }
 

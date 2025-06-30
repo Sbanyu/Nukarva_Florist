@@ -20,7 +20,7 @@
         android:id="@+id/backButton"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_arrow_back"
+        android:src="@drawable/ic_arror_left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="Back" />

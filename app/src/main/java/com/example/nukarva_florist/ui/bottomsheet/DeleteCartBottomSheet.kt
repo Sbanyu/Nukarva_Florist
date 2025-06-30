@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.example.nukarva_florist.R
-import com.example.nukarva_florist.data.model.CartItemResponse
+import com.example.nukarva_florist.data.resp.CartItemResponse
 import com.example.nukarva_florist.databinding.BottomSheetDeleteToCartBinding
+import com.example.nukarva_florist.utils.AppUtil
+import com.example.nukarva_florist.utils.AppUtil.toRupiahWithoutDecimal
 import com.example.nukarva_florist.utils.Resource
 import com.example.nukarva_florist.viewmodel.CartViewModel
 import com.github.razir.progressbutton.bindProgressButton
@@ -49,7 +51,7 @@ class DeleteCartBottomSheet(
 
         binding.tvProductName.text = item.productName
         binding.tvAvailability.text = "Quan" + item.quantity.toString()
-        binding.tvPrice.text = "Rp %,.0f".format(item.price * item.quantity)
+        binding.tvPrice.text = (item.price * item.quantity).toRupiahWithoutDecimal()
         binding.btnDelToCart.text = "Remove from Cart"
 
         bindProgressButton(binding.btnDelToCart)

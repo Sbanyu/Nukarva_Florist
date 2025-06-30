@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nukarva_florist.data.model.CartItemResponse
+import com.example.nukarva_florist.data.resp.CartItemResponse
 import com.example.nukarva_florist.data.model.ParseResponse
 import com.example.nukarva_florist.data.req.CartRequest
 import com.example.nukarva_florist.repository.CartRepository

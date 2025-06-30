@@ -1,6 +1,6 @@
 package com.example.nukarva_florist.repository
 
-import com.example.nukarva_florist.data.model.CartItemResponse
+import com.example.nukarva_florist.data.resp.CartItemResponse
 import com.example.nukarva_florist.data.model.ParseResponse
 import com.example.nukarva_florist.data.req.CartRequest
 import com.example.nukarva_florist.data.req.UpdateQuantityRequest

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:statusBarForeground="@color/white">
+
+        <!-- Toolbar -->
+        <include android:id="@+id/toolbar" layout="@layout/toolbar_with_favorite"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/app_bar_layout"
+        android:layout_above="@+id/ll_address"
+        android:background="@color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Recipient Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Recipient's name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecipientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. Banyu Santoso"
+                    android:textColorHint="@color/font_grey"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Phone Number -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:endIconMode="custom"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="08xxxxxxxxxx"
+                    android:inputType="phone"
+                    android:textColorHint="@color/font_grey"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Section Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Detail Address"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/urbanist_bold" />
+
+            <!-- Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Address Label"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:hintEnabled="false"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. Home / Office"
+                    android:textColorHint="@color/font_grey"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- City -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kota &amp; Kecamatan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:hintEnabled="false"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. Tangerang, Banten"
+                    android:maxLines="1"
+                    android:textColorHint="@color/font_grey"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kode Pos"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/urbanist_medium" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/fill_color_04"
+                    app:boxStrokeColor="@drawable/text_input_stroke_color"
+                    app:hintEnabled="false"
+                    app:boxCornerRadiusBottomEnd="16dp"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusTopStart="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etKodePos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="e.g. 10001"
+                        android:maxLength="6"
+                        android:textColorHint="@color/font_grey"
+                        android:fontFamily="@font/urbanist_medium"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Full Address -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Alamat Lengkap"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:hintEnabled="false"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFullAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="e.g. Jl. Kenangan No.1"
+                    android:textColorHint="@color/font_grey"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Notes -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Catatan"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@drawable/text_input_stroke_color"
+                app:boxBackgroundColor="@color/fill_color_04"
+                app:hintEnabled="false"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e.g. Dekat Warung Madura (Opsional)"
+                    android:textColorHint="@color/font_grey"
+                    android:fontFamily="@font/urbanist_medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Pinpoint Section (use your own dialog/map) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Add Pinpoint (optional)"
+                android:textColor="@color/main_color_500"
+                android:textSize="16sp"
+                android:fontFamily="@font/urbanist_medium"
+                android:drawablePadding="8dp"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_pin_point"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/outlined_button_background"
+                android:backgroundTint="@color/disable"
+                android:padding="12dp"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardImage"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardCornerRadius="99dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/disable">
+
+                    <ImageView
+                        android:id="@+id/imgProduct"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_location"
+                        android:backgroundTint="@color/main_color_500"/>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_label_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Add Pinpoint"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textSize="14sp"
+                    android:layout_toEndOf="@id/cardImage"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_right"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+
+            <!-- Checkbox -->
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbMakeMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Make the main address"
+                android:checked="true"
+                android:textColor="@color/black"
+                android:buttonTint="@color/main_color_500"
+                android:fontFamily="@font/urbanist_medium"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_shadow"
+        android:layout_above="@+id/ll_address"/>
+
+    <LinearLayout
+        android:id="@+id/ll_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:background="@color/white">
+        <!-- Choose Address Button -->
+        <Button
+            android:id="@+id/btn_save_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan Alamat"
+            android:fontFamily="@font/urbanist_bold"
+            android:textAllCaps="false"
+            android:background="@drawable/rounded_button"
+            android:stateListAnimator="@null"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

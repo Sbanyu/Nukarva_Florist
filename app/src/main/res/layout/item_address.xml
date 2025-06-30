@@ -22,7 +22,6 @@
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:buttonTint="@color/main_color_500"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:clickable="false"/>

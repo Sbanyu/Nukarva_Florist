@@ -73,6 +73,28 @@
             android:theme="@style/Theme.NukarvaFlorist"
             android:exported="true"/>
 
+        <!-- Order Activity -->
+        <activity
+            android:name=".ui.home.OrderActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Address Activity -->
+        <activity
+            android:name=".ui.address.AddressActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <!-- Edit Address Activity -->
+        <activity
+            android:name=".ui.address.AddEditAddressActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
+        <activity android:name=".ui.home.PaymentSuccessActivity"
+            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"/>
+
         <activity
             android:name=".ui.address.ChoosePinpointActivity"
             android:exported="true"/>

@@ -2,6 +2,7 @@ package com.example.nukarva_florist.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import com.example.nukarva_florist.data.AppPreferences
 import com.example.nukarva_florist.network.ApiService
 import com.example.nukarva_florist.network.AuthInterceptor
@@ -48,8 +49,10 @@ object AppModule {
     fun provideApiService(okHttpClient: OkHttpClient): ApiService {
         val retrofit = Retrofit.Builder()
 //            .baseUrl("http://192.168.1.19:9090/") //LocalHost Xiomi
-//            .baseUrl("http://localhost:9090/")
-            .baseUrl("http://10.0.2.2:9090/") //Emulator
+//            .baseUrl("http://192.168.100.46:9090/")
+//            .baseUrl(getBaseUrl())
+            .baseUrl("http://localhost:9090/")
+//            .baseUrl("http://10.0.2.2:9090") //Emulator
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -85,6 +88,16 @@ object AppModule {
     @Singleton
     fun provideSplashRepository(appPreferences: AppPreferences): SplashRepository {
         return SplashRepository(appPreferences)
+    }
+
+    fun getBaseUrl(): String {
+        return if (Build.FINGERPRINT.contains("generic")) {
+            // Emulator
+            "http://10.10.20.214:9090/"
+        } else {
+            // Real Device (local IP from Mac for backend)
+            "http://192.168.161.11:9090/"
+        }
     }
 }
 

@@ -10,9 +10,9 @@ class AuthInterceptor(
     private val appPreferences: AppPreferences
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-//        val token = appPreferences.getToken()
+        val token = appPreferences.getToken()
         val originalRequest = chain.request()
-        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0MCIsImlzcyI6Im51a2FydmEtYXBpIiwiYXVkIjoibnVrYXJ2YS1jbGllbnQiLCJpYXQiOjE3NTAzMTU2NzYsImV4cCI6MTc1MDMxOTI3Nn0._EmYplMTZMrbj4uDrQ_oiNkiD1gVRlLtNu7CsQ6Luis"
+//        val token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0MCIsImlzcyI6Im51a2FydmEtYXBpIiwiYXVkIjoibnVrYXJ2YS1jbGllbnQiLCJpYXQiOjE3NTA5NTc1ODAsImV4cCI6MTc1MDk2MTE4MH0.htwvUu_ibd_wTLZ4UcHpeVrvzUF9tNAyE_RKdV6OMds"
 
         return if (token.isNullOrEmpty()) {
             chain.proceed(originalRequest)

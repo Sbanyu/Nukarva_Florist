@@ -11,7 +11,8 @@
         android:id="@+id/checkboxSelect"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:buttonTint="@color/main_color_500"
+        android:checked="true"
+        app:buttonTint="@color/main_color_500"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

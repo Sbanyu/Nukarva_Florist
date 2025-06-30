@@ -3,7 +3,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/outlined_button_background"
-    android:backgroundTint="@color/disable"
     android:padding="16dp"
     android:layout_marginTop="16dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -33,6 +32,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_name_provider_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PlantifyPay"
@@ -41,6 +41,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -51,6 +52,7 @@
     </LinearLayout>
 
     <RadioButton
+        android:id="@+id/rb_options_method"
         android:layout_width="32dp"
         android:layout_height="wrap_content"
         android:textIsSelectable="false"

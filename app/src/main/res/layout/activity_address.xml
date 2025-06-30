@@ -1,87 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
-    <!-- Toolbar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:statusBarForeground="@color/white">
 
-    <include layout="@layout/toolbar_with_favorite"/>
+            <!-- Toolbar -->
+            <include android:id="@+id/toolbar" layout="@layout/toolbar_with_add"/>
 
-    <LinearLayout
+        </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_below="@+id/app_bar_layout"
+        android:layout_above="@id/ll_address"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Search -->
         <LinearLayout
-            android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="24dp"
-            android:paddingVertical="16dp"
-            android:paddingHorizontal="20dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_search_box">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_search"/>
+            <!-- Search -->
+            <LinearLayout
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="20dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_search_box">
 
-            <EditText
-                android:id="@+id/et_search"
-                android:layout_width="0dp"
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_search"/>
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Search product"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColorHint="#D4D4D8"
+                    android:textColor="@color/black"
+                    android:paddingHorizontal="8dp"/>
+            </LinearLayout>
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shipping Address"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="24dp"
+                android:fontFamily="@font/urbanist_bold"
+                android:textColor="@color/black" />
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvShippingAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@null"
-                android:hint="Search product"
-                android:fontFamily="@font/urbanist_medium"
-                android:textColorHint="#D4D4D8"
-                android:textColor="@color/black"
-                android:paddingHorizontal="8dp"/>
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="24dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                tools:listitem="@layout/item_address" />
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        <!-- Title -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Shipping Address"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginHorizontal="24dp"
-            android:fontFamily="@font/urbanist_bold"
-            android:textColor="@color/black" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.4dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_shadow"
+        android:layout_above="@+id/ll_address"/>
 
-        <!-- RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvShippingAddress"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="24dp"
-            android:paddingHorizontal="24dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            tools:listitem="@layout/item_address" />
-
+    <LinearLayout
+        android:id="@+id/ll_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:background="@color/white">
         <!-- Choose Address Button -->
         <Button
-            android:id="@+id/btnChooseAddress"
+            android:id="@+id/btn_save_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Choose Address"
+            android:text="Simpan Alamat"
             android:fontFamily="@font/urbanist_bold"
             android:textAllCaps="false"
             android:background="@drawable/rounded_button"
             android:stateListAnimator="@null"
             android:textColor="@color/white" />
+
     </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

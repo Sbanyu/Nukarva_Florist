@@ -4,11 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.nukarva_florist.data.req.AuthRequest
-import com.example.nukarva_florist.data.model.AuthResponse
 import com.example.nukarva_florist.data.model.ParseResponse
 import com.example.nukarva_florist.data.req.OtpRequest
-import com.example.nukarva_florist.repository.AuthRepository
 import com.example.nukarva_florist.repository.OtpRepository
 import com.example.nukarva_florist.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

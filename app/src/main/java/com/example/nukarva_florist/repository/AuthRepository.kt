@@ -1,7 +1,7 @@
 package com.example.nukarva_florist.repository
 
 import com.example.nukarva_florist.data.req.AuthRequest
-import com.example.nukarva_florist.data.model.AuthResponse
+import com.example.nukarva_florist.data.resp.AuthResponse
 import com.example.nukarva_florist.network.ApiService
 import retrofit2.Response
 

@@ -19,6 +19,15 @@ class AppPreferences(private val mContext: Context) {
         return sharedPref.getString(Constants.Login.TOKEN, "token")
     }
 
+    fun setUsername(username: String?) {
+        spEditor.putString(Constants.Login.NAMA, username)
+        spEditor.commit()
+    }
+
+    fun getUsername(): String? {
+        return sharedPref.getString(Constants.Login.NAMA, "nama")
+    }
+
     fun setEmail(email: String?) {
         spEditor.putString(Constants.Login.EMAIL, email)
         spEditor.commit()
@@ -71,6 +80,24 @@ class AppPreferences(private val mContext: Context) {
 
     fun getIsLoggedIn(): String? {
         return sharedPref.getString(Constants.Preferences.LOGGEDIN, "false")
+    }
+
+    fun isAddressSent(): Boolean {
+        return sharedPref.getBoolean(Constants.Preferences.ADDRESS_SENT, false)
+    }
+
+    fun setAddressSent(value: Boolean) {
+        spEditor.putBoolean(Constants.Preferences.ADDRESS_SENT, value)
+        spEditor.commit()
+    }
+
+    fun setAddress(address: String?) {
+        spEditor.putString(Constants.Preferences.ADDRESS, address)
+        spEditor.commit()
+    }
+
+    fun getAddress(): String? {
+        return sharedPref.getString(Constants.Preferences.ADDRESS, null)
     }
 
     companion object {

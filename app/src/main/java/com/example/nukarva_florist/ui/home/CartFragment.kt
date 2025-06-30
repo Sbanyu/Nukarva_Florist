@@ -1,5 +1,6 @@
 package com.example.nukarva_florist.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,9 +13,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nukarva_florist.R
-import com.example.nukarva_florist.data.model.CartItemResponse
+import com.example.nukarva_florist.data.resp.CartItemResponse
 import com.example.nukarva_florist.databinding.ActivityCartLayoutBinding
 import com.example.nukarva_florist.ui.bottomsheet.DeleteCartBottomSheet
+import com.example.nukarva_florist.utils.AppUtil.toRupiahWithoutDecimal
 import com.example.nukarva_florist.utils.Resource
 import com.example.nukarva_florist.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +55,7 @@ class CartFragment : Fragment() {
     }
 
     private fun setupToolbar() {
+        binding.toolbar.btnBack.visibility = View.GONE
         binding.toolbar.toolbarTitle.text = "Cart"
         binding.toolbar.btnBack.setOnClickListener {
             requireActivity().onBackPressed()
@@ -118,7 +121,8 @@ class CartFragment : Fragment() {
     }
 
     private fun updateTotalPrice(total: Double) {
-        binding.tvTotalPrice.text = "Rp %,.0f".format(total)
+
+        binding.tvTotalPrice.text = total.toRupiahWithoutDecimal()
         binding.btnOrder.isEnabled = total > 0
         binding.btnOrder.backgroundTintList =
             if (total > 0) requireContext().getColorStateList(R.color.main_color_500)
@@ -127,8 +131,12 @@ class CartFragment : Fragment() {
 
     private fun setupBottomSummary() {
         binding.btnOrder.setOnClickListener {
-            // Handle order
+            val selectedItems = cartItems.filter { it.isSelected }
+            val intent = Intent(requireContext(), OrderActivity::class.java)
+            intent.putParcelableArrayListExtra("selected_items", ArrayList(selectedItems))
+            startActivity(intent)
         }
+
     }
 
     override fun onDestroyView() {

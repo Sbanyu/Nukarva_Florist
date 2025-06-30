@@ -69,4 +69,8 @@
     <color name="danger_200">#F17D9D</color>
     <color name="danger_100">#FFBCCC</color>
 
+    <!-- Shimmer Color-->
+    <color name="shimmer_placeholder">#E4E4E7</color>
+    <color name="shimmer_highlight">#F9F9F9</color>
+
 </resources>

@@ -88,6 +88,8 @@ class LoginActivity : AppCompatActivity() {
                     result.data?.data?.token?.let { token ->
                         // Save token to preferences
                         appPreferences.setEmail(binding.etEmail.text.toString())
+                        appPreferences.setUsername(result.data.data.fullName)
+                        Log.d("UserName",result.data.data.fullName.toString())
                         appPreferences.setToken(token)
                         Log.d("TOKEN", token ?: "")
                         // Navigate to main activity

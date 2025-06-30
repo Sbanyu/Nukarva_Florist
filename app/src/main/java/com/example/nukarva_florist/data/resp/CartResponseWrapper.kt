@@ -1,4 +1,4 @@
-package com.example.nukarva_florist.data.model
+package com.example.nukarva_florist.data.resp
 
 data class CartResponseWrapper(
     val code: String,

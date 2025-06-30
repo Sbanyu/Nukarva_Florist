@@ -30,10 +30,12 @@ import com.example.nukarva_florist.utils.DialogUtils.showCustomStatusDialog
 import com.example.nukarva_florist.utils.Resource
 import com.example.nukarva_florist.viewmodel.OtpViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class OtpActivity : AppCompatActivity() {
 
+    @Inject
     lateinit var appPreferences: AppPreferences
     private lateinit var binding: ActivityOtpBinding
     private val otpDigits = mutableListOf<Char>()
@@ -121,6 +123,7 @@ class OtpActivity : AppCompatActivity() {
                 is Resource.Loading -> showNotif()
                 is Resource.Success -> {
                     // Navigate to Home or another screen
+                    appPreferences.setIsLoggedIn("true")
                     startActivity(Intent(this, CoreActivity::class.java))
                     finish()
                 }
@@ -201,12 +204,10 @@ class OtpActivity : AppCompatActivity() {
     }
 
     private fun isOtpComplete(otpFields: List<EditText>): Boolean {
-        Log.e(TAG, "Yosua Anjing")
         return otpFields.all { !it.text.isNullOrEmpty() }
     }
 
     private fun getOtpValue(otpFields: List<EditText>): String {
-        Log.e(TAG, "Yosua Tai")
         return otpFields.joinToString("") { it.text.toString() }
     }
 

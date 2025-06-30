@@ -1,5 +1,9 @@
-package com.example.nukarva_florist.data.model
+package com.example.nukarva_florist.data.resp
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CartItemResponse(
     val id: Int,
     val userId: Int,
@@ -11,4 +15,4 @@ data class CartItemResponse(
     val price: Double,
     val imageUrls: String,
     var isSelected: Boolean = false
-)
+) : Parcelable

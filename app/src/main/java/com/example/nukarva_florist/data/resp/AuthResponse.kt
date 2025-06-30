@@ -1,5 +1,6 @@
-package com.example.nukarva_florist.data.model
+package com.example.nukarva_florist.data.resp
 
+import com.example.nukarva_florist.data.model.AuthData
 import com.google.gson.annotations.SerializedName
 
 data class AuthResponse(

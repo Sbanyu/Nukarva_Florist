@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root_layout"
+    android:background="@color/white"
     android:fitsSystemWindows="true">
 
 <ScrollView
@@ -153,7 +154,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <CheckBox
+            <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbRemember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

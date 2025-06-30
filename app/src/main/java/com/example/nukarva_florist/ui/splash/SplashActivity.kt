@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.nukarva_florist.R
 import com.example.nukarva_florist.databinding.ActivitySplashBinding
 import com.example.nukarva_florist.ui.auth.LoginActivity
+import com.example.nukarva_florist.ui.home.CoreActivity
 import com.example.nukarva_florist.ui.onboarding.OnBoardingActivity
 import com.example.nukarva_florist.viewmodel.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
             Handler(Looper.getMainLooper()).postDelayed({
                 if (isLoggedIn) {
                     // Pengguna sudah login, navigasi ke MainActivity
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    startActivity(Intent(this, CoreActivity::class.java))
                 } else {
                     // Pengguna belum login, navigasi ke LoginActivity
                     startActivity(Intent(this, OnBoardingActivity::class.java))
